@@ -1,3 +1,6 @@
+<?php
+$error = $_GET['error'] ?? null;
+?>
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -11,23 +14,23 @@
     <form method="POST" enctype="multipart/form-data" action="index.php">
   <div class="mb-3">
     <label for="fullname" class="form-label">Complete Name</label>
-    <input type="fullname" class="form-control" id="fullname" name="complete_name">
+    <input type="fullname" class="form-control" id="fullname" name="complete_name" required>
   </div>
   <div class="mb-3">
     <label for="email" class="form-label">Email Address</label>
-    <input type="email" class="form-control" id="email" name="email">
+    <input type="email" class="form-control" id="email" name="email" required>
   </div>
   <div class="mb-3">
     <label for="password" class="form-label">Password</label>
-    <input type="password" class="form-control" id="password">
+    <input type="password" class="form-control" id="password" name="password" required>
   </div>
   <div class="mb-3">
     <label for="password" class="form-label">Confirm Password</label>
-    <input type="password" class="form-control" id="password" name="password">
+    <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
   </div>
   <div class="mb-3 form-check">
     <label for="input_file" class="form-label">Picture</label>
-    <input name="picture_path" class="form-control" type="file" id="picture_path">
+    <input name="picture_path" class="form-control" type="file" id="picture_path" accept="image/*" required>
   </div>
   <div class="text-center">
   <button type="submit" class="btn btn-primary">Submit Registration</button>

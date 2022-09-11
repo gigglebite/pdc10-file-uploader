@@ -9,23 +9,17 @@ $passwd = "root";
 $pdo = new PDO($dsn, $user, $passwd);
 
 $result = Registration::handleUpload($_FILES['picture_path']);
-$pass = Registration::encPass($_POST['password'])
 
-?>
-
-<?php
-
-if ($result !== FALSE) {
-
-	// Save the uploaded file to DB. File name as the label
+if ($result !== FALSE && $_POST["password"] === $_POST["confirm_password"]) {
+	$pass = Registration::encPass($_POST['password']);
 	$obj = new Registration($_POST['complete_name'],$_POST['email'],$pass['password'],$result['path']);
 	$result = $obj->save();
-  echo ("Successfully saved your registration");
+  $message = true;
 
 } else {
-  echo ("Unable to process your registration");
+  $message = false;
 }
-  ?>
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -35,7 +29,17 @@ if ($result !== FALSE) {
   </head>
   <body>
   <div class="container">
-
+<?php
+if ($message == true){
+  echo "<div class=". "'alert alert-success'" . ">
+  Successfully processed your registration.
+</div>";
+} else if ($message != true) {
+  echo "<div class=". "'alert alert-danger'" . ">
+  Unable to process your registration.
+</div>";
+}
+?>
 <div class="row">
 <div class="col">
     <h2>Registrations</h2>
