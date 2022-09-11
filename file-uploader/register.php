@@ -1,6 +1,3 @@
-<?php
-$error = $_GET['error'] ?? null;
-?>
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
